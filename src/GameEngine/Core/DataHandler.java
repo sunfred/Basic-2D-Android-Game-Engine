@@ -12,17 +12,22 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 
 import GameEngine.Objects.Interfaces.IGameSave;
+import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
+import android.util.Log;
 
 public class DataHandler {
 	// Public Properties
 	// Public Methods
 	public DataHandler(){
 		mContext = null;
+		mSettings = null;
+		mEditor = null;
 		mRootDirectory = null;
 		mFileInpStream = null;
 		mInpStream = null;
@@ -32,6 +37,8 @@ public class DataHandler {
 	}
 	public void Setup(Context c){
 		mContext = c;
+		mSettings = ((Activity)mContext).getSharedPreferences("" + mContext.getPackageName(), 0);
+		mEditor = mSettings.edit();
 		if(mRootDirectory == null){ 
 			mRootDirectory = "Android/data/" + mContext.getPackageName() + "/Data";
 			
@@ -77,7 +84,7 @@ public class DataHandler {
 		
 		return sb.toString();
 	}
-	public static void SaveData(String Filename, String Input){
+	public static void SaveFileData(String Filename, String Input){
 		try {
 			File mFile = new File(Environment.getExternalStorageDirectory() +"/" +  mRootDirectory + "/" + Filename);
 			
@@ -95,7 +102,7 @@ public class DataHandler {
 		   e.printStackTrace();
 		}
 	}
-	public static String LoadData(String Filename){
+	public static String LoadFileData(String Filename){
 		mFileInpStream = null;
 		mBuffReader = null;
 		
@@ -126,7 +133,7 @@ public class DataHandler {
 		}
 		return null;
 	}
-	public static boolean DeleteData(String Filename){
+	public static boolean DeleteFileData(String Filename){
 		File mFile = new File(Environment.getExternalStorageDirectory()+ "/" + mRootDirectory + "/" + Filename);
 		if(mFile.exists()){
 			return mFile.delete();
@@ -139,8 +146,55 @@ public class DataHandler {
 	public static IGameSave GetCurrentSave(){
 		return mCurrentSave;
 	}
+	
+	public static void SaveSettingsIntData(String name, int value){
+		mEditor.putInt(name, value);
+		mEditor.commit();
+		
+		Log.d(TAG, "Saved int data: " + name + " " + value);
+	}
+	
+	public static void SaveSettingsStringData(String name, String value){
+		mEditor.putString(name, value);
+		mEditor.commit();
+		
+		Log.d(TAG, "Saved string data: " + name + " " + value);
+	}
+	
+	public static void SaveSettingsBooleanData(String name, boolean value){
+		mEditor.putBoolean(name, value);
+		mEditor.commit();
+		
+		Log.d(TAG, "Saved boolean data: " + name + " " + value);
+	}
+	
+	public static int LoadSettingsIntData(String name){
+		Log.d(TAG, "Loaded int data: " + name);
+		return mSettings.getInt(name, 0);
+	}
+	
+	public static String LoadSettingsStringData(String name){
+		Log.d(TAG, "Loaded string data: " + name);
+		return mSettings.getString(name, "");
+	}
+	
+	public static boolean LoadSettingsBooleanData(String name){
+		Log.d(TAG, "Loaded boolean data: " + name);
+		return mSettings.getBoolean(name, false);
+	}
+	public static void DeleteSettingsData(String name){
+		mEditor.remove(name);
+		mEditor.commit();
+	}
+	public static void ClearSettingData(){
+		mEditor.clear();
+		mEditor.commit();
+	}
 	// Private Properties
+	private static final String TAG = DataHandler.class.getSimpleName();
 	private static Context mContext;
+	private static SharedPreferences mSettings;
+	private static SharedPreferences.Editor mEditor;
 	private static String mRootDirectory;
 	private static FileInputStream mFileInpStream;
 	private static InputStream mInpStream;

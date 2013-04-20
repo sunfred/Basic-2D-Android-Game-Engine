@@ -158,7 +158,16 @@ public class GraphicsHandler {
 				mCanvas.drawLine(x + (i * Renderer.BlockWidth), y, x + (i * Renderer.BlockWidth), Viewport.bottom, mPaint);
 			}
 			for(int j = 0; j < Viewport.bottom / Renderer.BlockHeight; j++){
-				mCanvas.drawLine(x, y + (j * Renderer.BlockWidth), Viewport.right, y + (j * Renderer.BlockWidth), mPaint);
+				mCanvas.drawLine(x, y + (j * Renderer.BlockHeight), Viewport.right, y + (j * Renderer.BlockHeight), mPaint);
+			}
+		}
+		public void DrawGridOverlay(int x, int y, int width, int height, int color){
+			mPaint.setColor(color);
+			for(int i = 0; i < Viewport.right / width; i++){
+				mCanvas.drawLine(x + (i * width), y, x + (i * width), Viewport.bottom, mPaint);
+			}
+			for(int j = 0; j < Viewport.bottom / height; j++){
+				mCanvas.drawLine(x, y + (j * height), Viewport.right, y + (j * height), mPaint);
 			}
 		}
 		public void SetBackground(int Color) {

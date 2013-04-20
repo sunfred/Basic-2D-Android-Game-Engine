@@ -3,14 +3,8 @@ package GameEngine.Objects.GameObjects;
 import android.graphics.PointF;
 
 public abstract class PhysicGameObjects extends GameObjects {
-	/**
-	 * @uml.property  name="velocity"
-	 * @uml.associationEnd  
-	 */
+	
 	public PointF Velocity;
-	/**
-	 * @uml.property  name="friction"
-	 */
 	public float Friction;
 	public PhysicGameObjects() {
 		super();
@@ -33,12 +27,16 @@ public abstract class PhysicGameObjects extends GameObjects {
 		Velocity.x = velX;
 		Velocity.y = velY;
 		Friction = friction;
-	}	
+	}
 	protected void MoveConstVel(float t){
 		this.x += Velocity.x * t;
 		this.y += Velocity.y * t;
 		
 		this.Velocity.x *= Friction;
 		this.Velocity.y *= Friction;
+	}
+	@Override
+	public void Update(float t) {
+		MoveConstVel(t);
 	}
 }

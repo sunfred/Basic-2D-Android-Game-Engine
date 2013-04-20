@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.1.2" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true">  
-  <class id="1" language="java" name="GameEngine.GameView" project="AndroidGameEngineV2.2" 
-    file="/AndroidGameEngineV2.2/src/GameEngine/GameView.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="1" language="java" name="GameEngine.GameView" project="Simple Android Game Engine V1.0" 
+    file="/Simple Android Game Engine V1.0/src/GameEngine/GameView.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="169" y="355"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
@@ -10,8 +10,8 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="GameEngine.EngineActivity" project="AndroidGameEngineV2.2" 
-    file="/AndroidGameEngineV2.2/src/GameEngine/EngineActivity.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="2" language="java" name="GameEngine.EngineActivity" project="Simple Android Game Engine V1.0" 
+    file="/Simple Android Game Engine V1.0/src/GameEngine/EngineActivity.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="189" width="195" x="63" y="-23"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
@@ -19,8 +19,8 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="GameEngine.Core.GameEngine" project="AndroidGameEngineV2.2" 
-    file="/AndroidGameEngineV2.2/src/GameEngine/Core/GameEngine.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="3" language="java" name="GameEngine.Core.GameEngine" project="Simple Android Game Engine V1.0" 
+    file="/Simple Android Game Engine V1.0/src/GameEngine/Core/GameEngine.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="613" y="353"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      

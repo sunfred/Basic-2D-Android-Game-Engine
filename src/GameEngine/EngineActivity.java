@@ -2,6 +2,7 @@ package GameEngine;
 
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.WindowManager;
 import android.app.Activity;
 import GameEngine.Scene.GameScene;
 
@@ -14,6 +15,7 @@ public abstract class EngineActivity extends Activity {
 			View = new GameView(this);
 			Setup();
 		}
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		setContentView(View);
 	}	
 	@Override
